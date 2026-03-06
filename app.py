@@ -1,25 +1,33 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import os
 
-app = Flask(__name__, static_folder="frontend")
+app = Flask(__name__)
+CORS(app)
 
-@app.route("/")
-def home():
-    return send_from_directory("frontend", "index.html")
+UPLOAD_FOLDER = "../uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-@app.route("/<path:path>")
-def static_files(path):
-    return send_from_directory("frontend", path)
+@app.route("/detect", methods=["POST"])
+def detect():
 
-@app.route("/predict", methods=["POST"])
-def predict():
     if "image" not in request.files:
         return jsonify({"error": "No image uploaded"})
 
-    image = request.files["image"]
+    file = request.files["image"]
 
-    result = "Plant detected"
+    filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+    file.save(filepath)
 
-    return jsonify({"prediction": result})
+    # Temporary result (AI will be added later)
+    result = {
+        "plant_name": "Neem",
+        "category": "Native",
+        "confidence": "92%"
+    }
+
+    return jsonify(result)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
