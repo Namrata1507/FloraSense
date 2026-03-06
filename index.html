@@ -1,20 +1,129 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>FloraSense</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FloraSense - Plant Detection</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<h1>FloraSense 🌿</h1>
-<p>Upload a plant image to detect species</p>
+<!-- NAVBAR -->
+<header>
+    <nav>
+        <h2>FloraSense 🌿</h2>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#detect">Detect Plant</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#plants">Supported Plants</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-<input type="file" id="imageInput">AA
-<button onclick="uploadImage()">Detect Plant</button>
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>Image Based Recognition of Invasive Plant species</h1>
+    <p>Upload a plant image to detect species and identify whether it is Native or Invasive.</p>
+</section>
 
-<h3 id="result"></h3>
+<!-- IMAGE UPLOAD SECTION -->
+<section id="detect" class="upload-section">
+
+<h2>Upload Plant Image</h2>
+
+<input type="file" id="imageInput">
+
+<button onclick="detectPlant()">Detect Plant</button>
+
+<div class="preview">
+    <img id="previewImage" src="" alt="Preview Image">
+</div>
+
+</section>
+
+<!-- RESULT SECTION -->
+<section class="result">
+
+<h2>Detection Result</h2>
+
+<div id="resultBox">
+
+<p>Plant Name: -</p>
+
+<p>Category: -</p>
+
+<p>Confidence: -</p>
+
+</div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+
+<h2>How FloraSense Works</h2>
+
+<ol>
+
+<li>User uploads plant image</li>
+
+<li>Image preprocessing is applied</li>
+
+<li>AI detects multiple plants</li>
+
+<li>CNN model identifies species</li>
+
+<li>Database checks Native or Invasive</li>
+
+<li>Final result is displayed</li>
+
+</ol>
+
+</section>
+
+<!-- SUPPORTED PLANTS -->
+<section id="plants">
+
+<h2>Supported Plant Species</h2>
+
+<div class="plants">
+
+<div class="plant-card">
+<h3>Lantana Camara</h3>
+<p>Type: Invasive</p>
+</div>
+
+<div class="plant-card">
+<h3>Parthenium</h3>
+<p>Type: Invasive</p>
+</div>
+
+<div class="plant-card">
+<h3>Neem</h3>
+<p>Type: Native</p>
+</div>
+
+<div class="plant-card">
+<h3>Banyan</h3>
+<p>Type: Native</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<p>© 2026 FloraSense |Image Based Recognition of Invasive Plant species</p>
+
+</footer>
 
 <script src="script.js"></script>
 
